@@ -61,17 +61,6 @@ jobs:
         working-directory: integration_tests/fixtures
         continue-on-error: true
 
-      - name: Terraform Output
-        id: output
-        run: terraform output -json > ../files/terraform.json
-        working-directory: integration_tests/fixtures
-
-      - name: run inspec
-        uses: docker://chef/inspec:latest
-        with:
-          args: exec integration_tests --chef-license=accept
-        continue-on-error: true
-
       - name: Terraform Destroy
         id: destroy
         run: terraform destroy -auto-approve -input=false
