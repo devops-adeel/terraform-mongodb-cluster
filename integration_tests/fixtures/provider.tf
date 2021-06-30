@@ -3,6 +3,9 @@ terraform {
     vault = {
       source = "hashicorp/vault"
     }
+    mongodbatlas = {
+      source = "mongodb/mongodbatlas"
+    }
   }
   backend "remote" {
     organization = "hc-implementation-services"
@@ -27,6 +30,8 @@ provider "vault" {
     }
   }
 }
+
+provider "mongodbatlas" {}
 
 locals {
   application_name = "terraform-mongodb-cluster"
